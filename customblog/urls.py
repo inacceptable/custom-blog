@@ -23,7 +23,6 @@ urlpatterns = [
     path('', views.home, name='home'), 
     path('topic', views.get_topic, name='topic'),
     path('post', views.post, name='post'),  
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('controladmin', views.controladmin, name='controladmin'), 
     path('change_color', views.change_color, name='change_color'), 
     path('change_text', views.change_text, name='change_text'), 

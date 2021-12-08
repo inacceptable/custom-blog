@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'blog',
     'colorfield',
     'django_cleanup.apps.CleanupConfig',
-    'django_quill', 
 
 ]
 MIDDLEWARE = [

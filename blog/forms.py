@@ -2,7 +2,6 @@ from django import forms
 from blog.models import home_page_section 
 from .models import topic, blog_post
 
-from ckeditor.widgets import CKEditorWidget
 class section_form(forms.Form):
 	section_title = forms.CharField(label = 'Section title ', max_length=50,)
 	header_image  = forms.ImageField()

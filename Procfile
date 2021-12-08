@@ -1,1 +1,1 @@
-web: gunicorn covidwebsite.wsgi 
+web: gunicorn customblog.wsgi 

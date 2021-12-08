@@ -1,7 +1,5 @@
 from django.db import models
 from colorfield.fields import ColorField
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
 
 class topic(models.Model):
 	header_id = models.AutoField(primary_key=True) 

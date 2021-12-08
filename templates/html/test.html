@@ -1,0 +1,28 @@
+$("#navigation_bar_background_color").click(function () {
+    var color_value = $('#colorpicker2').val();
+    var color_value_new = color_value.substring(1, color_value.length);
+    $.ajax({
+        type : 'GET',
+        url: "navigation_bar_background_color/",
+        data: {
+          'color_value_new': color_value_new, 
+        },
+        success: function(data) {
+          $(".message").html("The color has been changed to: #" + color_value_new);
+        }
+      });
+});
+$("#navigation_button_background_color").click(function () {
+    var color_value = $('#colorpicker3').val();
+    var color_value_new = color_value.substring(1, color_value.length);
+    $.ajax({
+        type : 'GET',
+        url: "navigation_button_background_color/",
+        data: {
+          'color_value_new': color_value_new, 
+        },
+        success: function(data) {
+          $(".message").html("The color has been changed to: #" + color_value_new);
+        }
+      });
+});

@@ -1,0 +1,772 @@
+{% extends "html/template.html" %}
+{% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<br />
+
+<div class='customisation-wrapper text-center'>
+    <div class='customistation-choice' id='customistation-choice-menu'>
+        <h1>Customise page colors</h1>
+    </div>
+    <div class='customistation-choice' id='customistation-choice-header'>
+        <h1>Header</h1>
+    </div>
+    <div class='customistation-choice' id='customistation-choice-additional'>
+        <h1>Additional sections</h1>
+    </div>
+    <div class='customistation-choice' id='customistation-choice-posts-topics'>
+        <h1>Manage topics</h1>
+    </div>
+    <div class='customistation-choice' id='customistation-choice-posts-posts'>
+        <h1>Add and manage posts</h1>
+    </div>
+</div>
+<div class='website-changes '>
+
+    <div class='display-item' id='display-item-menu' style='display:none;'>
+        <div class='page-color-header-buttons-wrapper'> 
+        <div id='color-item-customise-navigation' class='color-item-customise'>Navigation menu</div>
+        <div id='color-item-customise-header' class='color-item-customise'>Header</div>
+        <div id='color-item-customise-additional' class='color-item-customise'>Additional sections</div>
+    </div>
+        <script>
+            $("#color-item-customise-navigation").click(function() {        
+            if ($('.item-container').is(":visible"))
+
+            {
+                 $(".color-item-customise").removeClass('active');        
+                $('.item-container').fadeOut(200);
+            }
+            else{
+
+                $("#item-container-navivgation").fadeIn(200); 
+                $("#color-item-customise-navigation").toggleClass('active');
+            }
+            $("#item-container-navivgation").fadeIn(200); 
+            $("#color-item-customise-navigation").addClass('active');
+
+            });
+             $("#color-item-customise-header").click(function() {
+ 
+                if ($('.item-container').is(":visible"))
+            {
+                $(".color-item-customise").removeClass('active');    
+                $('.item-container').fadeOut(200);
+
+            }
+            else{
+
+                $("#item-container-header").fadeIn(200); 
+                $("#color-item-customise-header").toggleClass('active');
+            }
+            $("#item-container-header").fadeIn(200); 
+            $("#color-item-customise-header").addClass('active');
+            });
+
+
+             $("#color-item-customise-additional").click(function() {
+ 
+                if ($('.item-container').is(":visible"))
+            {
+                $(".color-item-customise").removeClass('active');    
+                $('.item-container').fadeOut(200);
+
+            }
+            else{
+
+                $("#item-container-additional").fadeIn(200); 
+                $("#color-item-customise-additional").toggleClass('active');
+            }
+            $("#item-container-additional").fadeIn(200); 
+            $("#color-item-customise-additional").addClass('active');
+            });
+        </script>
+
+
+
+
+
+        <div class='item-container' id='item-container-navivgation' style='display: none;'>
+            <div class='item-item'>
+                <h3>Navigation button text color:</h3>
+                <input type='color' class='color-choice' id='colorpicker1' value='{{changes.navigation_button_text_color}}' />
+                <div class='message' id='colorpicker1message'></div>
+                <button href='' class='update-color' onclick="change_color('navigation_button_text_color', '#colorpicker1', '#colorpicker1message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Navigation bar background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker2' value='{{changes.navigation_bar_background_color}}' />
+                <div class='message' id='colorpicker2message'></div>
+                <button href='' class='update-color' onclick="change_color('navigation_bar_background_color', '#colorpicker2', '#colorpicker2message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Navigation button background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker3' value='{{changes.navigation_button_background_color}}' />
+                <div class='message' id='colorpicker3message'></div>
+                <button href='' class='update-color' onclick="change_color('navigation_button_background_color', '#colorpicker3', '#colorpicker3message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Navigation bar sub buttons background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker4' value='{{changes.navigation_bar_sub_buttons_background_color}}' />
+                <div class='message' id='colorpicker4message'></div>
+                <button href='' class='update-color' onclick="change_color('navigation_bar_sub_buttons_background_color', '#colorpicker4', '#colorpicker4message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Navigation bar sub button font color:</h3>
+                <input type='color' class='color-choice' id='colorpicker5' value='{{changes.navigation_bar_sub_button_font_color}}' />
+                <div class='message' id='colorpicker5message'></div>
+                <button href='' class='update-color' onclick="change_color('navigation_bar_sub_button_font_color', '#colorpicker5', '#colorpicker5message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Navigation drop down background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker24' value='{{changes.navigation_drop_down_background_color}}' />
+                <div class='message' id='colorpicker24message'></div>
+                <button href='' class='update-color' onclick="change_color('navigation_drop_down_background_color', '#colorpicker24', '#colorpicker24message');">Update color</button>
+            </div>
+        </div>
+        <div class='item-container' id='item-container-header' style='display:none;'> 
+             <div class='item-item'>
+                <h3>Header border background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker6' value='{{changes.header_border_background_color}}' />
+                <div class='message' id='colorpicker6message'></div>
+                <button href='' class='update-color' onclick="change_color('header_border_background_color', '#colorpicker6', '#colorpicker6message');">Update header border background color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Header background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker7' value='{{changes.header_background_color}}' />
+                <div class='message' id='colorpicker7message'></div>
+                <button href='' class='update-color' onclick="change_color('header_background_color', '#colorpicker7', '#colorpicker7message');">Update header background color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Header slogan background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker8' value='{{changes.header_slogan_background_color}}' />
+                <div class='message' id='colorpicker8message'></div>
+                <button href='' class='update-color' onclick="change_color('header_slogan_background_color', '#colorpicker8', '#colorpicker8message');">Update header slogan background color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Header top background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker16' value='{{changes.header_slogan_top_background_color}}' />
+                <div class='message' id='colorpicker16message'></div>
+                <button href='' class='update-color' onclick="change_color('header_slogan_top_background_color', '#colorpicker16', '#colorpicker16message');">Update header top background color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Header slogan font color:</h3>
+                <input type='color' class='color-choice' id='colorpicker9' value='{{changes.header_slogan_font_color}}' />
+                <div class='message' id='colorpicker9message'></div>
+                <button href='' class='update-color' onclick="change_color('header_slogan_font_color', '#colorpicker9', '#colorpicker9message');">Update header slogan font color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Header title font color:</h3>
+                <input type='color' class='color-choice' id='colorpicker10' value='{{changes.header_title_font_color}}' />
+                <div class='message' id='colorpicker10message'></div>
+                <button href='' class='update-color' onclick="change_color('header_title_font_color', '#colorpicker10', '#colorpicker10message');">Update header title font color</button>
+            </div>
+        </div>
+         <div class='item-container' id='item-container-additional' style='display: none;'>
+            <div class='item-item'>
+                <h3>Section button background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker19' value='{{changes.section_button_background_color}}' />
+                <div class='message' id='colorpicker19message'></div>
+                <button href='' class='update-color' onclick="change_color('section_button_background_color', '#colorpicker19', '#colorpicker19message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Section button font color:</h3>
+                <input type='color' class='color-choice' id='colorpicker20' value='{{changes.section_button_font_color}}' />
+                <div class='message' id='colorpicker20message'></div>
+                <button href='' class='update-color' onclick="change_color('section_button_font_color', '#colorpicker20', '#colorpicker20message');">Update color</button>
+            </div>
+
+            <div class='item-item'>
+                <h3>Section background color:</h3>
+                <input type='color' class='color-choice' id='colorpicker21' value='{{changes.section_background_color}}' />
+                <div class='message' id='colorpicker21message'></div>
+                <button href='' class='update-color' onclick="change_color('section_background_color', '#colorpicker21', '#colorpicker21message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Section text font color:</h3>
+                <input type='color' class='color-choice' id='colorpicker22' value='{{changes.section_text_font_color}}' />
+                <div class='message' id='colorpicker22message'></div>
+                <button href='' class='update-color' onclick="change_color('section_text_font_color', '#colorpicker22', '#colorpicker22message');">Update color</button>
+            </div>
+            <div class='item-item'>
+                <h3>Section border color:</h3>
+                <input type='color' class='color-choice' id='colorpicker23' value='{{changes.section_border_color}}' />
+                <div class='message' id='colorpicker23message'></div>
+                <button href='' class='update-color' onclick="change_color('section_border_color', '#colorpicker23', '#colorpicker23message');">Update color</button>
+            </div>
+        </div>
+    </div>
+    <div class='display-item' id='display-item-header' style='display:none;'>
+        <div class='item-container'>
+            <div class='item-item'>
+                <h3>Header title:</h3>
+                <input type='text' class='text-choice' id='textvalue1' value='{{changes.header_title}}' />
+                <div class='message' id='textvalue1message'></div>
+                <button href='' class='update-text' onclick="change_text('header_title', '#textvalue1', '#textvalue1message' );">Update title</button>
+            </div>
+            <div class='item-item'>
+                <h3>Header slogan:</h3>
+                <input type='text' class='text-choice' id='textvalue2' value='{{changes.header_slogan}}' />
+                <div class='message' id='textvalue2message'></div>
+                <button href='' class='update-text' onclick="change_text('header_slogan', '#textvalue2', '#textvalue2message' );">Update Slogan</button>
+            </div>
+    
+        </div>
+    </div>
+    <div class='display-item' id='display-item-additional' style='display:none;'>
+        <div class='add-a-section'>
+            <div class='add-a-section-header'>
+                <h3>Add a new section</h3>
+            </div>
+        </div>
+        <div class='additional-change-container'>
+            {% for x in page_section %}
+            <div class='addition-section-header' id='additinoal-section-header{{x.section_id}}'>
+                <h3 id='additional-title-header{{x.section_id}}'><span id='section-toggle-show{{x.section_id}}' style='float:right; font-size:2.2rem;'>+</span> <span id='section-toggle-hide{{x.section_id}}' style='display:none; float:right; font-size:2.2rem'>-</span> {{x.section_title}}</h3>
+            </div>
+            <div style='display:none;' class='addition-section-content' id='addition-section-content{{x.section_id}}'>
+                <h1>Change the title for this section</h1>
+                <input type='text' id='topicvaluetitle{{x.section_id}}' value="{{x.section_title}}" />
+                <div class='message' id='messagevalue{{x.section_id}}1'></div>
+                <button href='' class='additional-button' onclick="change_topic_text('{{x.section_id}}', '#topicvaluetitle{{x.section_id}}', '#messagevalue{{x.section_id}}1', 'section_title');">Update title</button>
+                <h1>Change the post that this section is linked to</h1>
+                <select class='topicvaluepost{{x.section_id}}'>
+                    <option  value='{{x.post_id}}'>{{x.post.post_title}}</option>
+                    {% for x in all_topics %}
+                    <optgroup label="Topic: {{x.topic_name}}">
+                        {% for i in all_posts %}
+                        {% if i.topic == x %}
+                        <option value='{{i.post_id}}'>{{i.post_title}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                    {% endfor %}
+                </select>
+                <div class='message' id='messagevalue{{x.section_id}}2'></div>
+                <button href='' id='changetopicvaluepost' class='additional-button' onclick="change_topic_text_select('{{x.section_id}}', '.topicvaluepost{{x.section_id}}', '#messagevalue{{x.section_id}}2', 'post');">Update post link</button>
+                <h1>Change the content for this section</h1>
+                <textarea id="topicvaluecontent{{x.section_id}}">{{x.section_content}}</textarea>
+                <div class='message' id='messagevalue{{x.section_id}}3'></div>
+                <button href='' class='additional-button' onclick="change_topic_text('{{x.section_id}}', '#topicvaluecontent{{x.section_id}}', '#messagevalue{{x.section_id}}3', 'section_content');">Update topic content</button>
+                <br />
+                <h1>Change the the image for this section</h1>
+                <img src='{{ MEDIA_URL }}{{x.header_image.url}}' id='section_image{{x.section_id}}' alt='' />
+                <br />
+                <label for='myfile{{x.section_id}}' id='label{{x.section_id}}' class="btn btn-primary" style='margin-bottom:2%;'>
+                Choose an image
+                </label>
+                <input type="file" style='display: none;' id="myfile{{x.section_id}}" name="myfile{{x.section_id}}">
+                <br /> 
+                <div class='label_value{{x.section_id}}'></div>
+                <div class='message' id='messagevalue{{x.section_id}}4'></div>
+                <button href='' id='uploadimage{{x.section_id}}' class='additional-button' ">Change the image</button>
+                <button href='' onclick="delete_section('{{x.section_id}}');" class='delete-button' >Delete item</button>
+            </div>
+
+            <script>
+$( "#myfile{{x.section_id}}" ).change(function() {
+     text_value = $("#myfile{{x.section_id}}").val();
+     $('.label_value{{x.section_id}}').html("Selected photo: " + text_value );
+
+});
+            $("#additinoal-section-header{{x.section_id}}").click(function() {
+                $("#section-toggle-show{{x.section_id}}").toggle();
+                $("#section-toggle-hide{{x.section_id}}").toggle();
+                $("#addition-section-content{{x.section_id}}").slideToggle(500);
+                 // Scroll screen to target element
+            });
+            $("#additinoal-section-header{{x.section_id}}").click(function() {
+                var x = document.getElementById('additinoal-section-header{{x.section_id}}');
+            });
+
+
+ $("#uploadimage{{x.section_id}}").click(function() {
+    var data = new FormData();
+    var header_id = {{x.section_id}}
+    var files = $("#myfile{{x.section_id}}").get(0).files[0]; 
+     data.append("file", $("#myfile{{x.section_id}}")[0].files[0]);
+    data.append('csrfmiddlewaretoken', "{{csrf_token}}"); 
+    data.append('header_id', '{{x.section_id}}');
+$.ajax({
+        type: 'POST',
+        url: "update_additional_section_photo",
+         processData: false,
+                contentType: false,
+                mimeType: "multipart/form-data",
+        data: data,
+        success: function(response) {
+             var obj=JSON.parse(response)["url"];
+            $('#messagevalue4').html("Photo has sucessfully been changed to" );
+            $('#section_image{{x.section_id}}').attr('src', obj);
+        }
+    });
+});
+            </script>
+            {% endfor %}
+        </div>
+    </div>
+    <div class='display-item' id='display-item-posts-topics' style='display:none;'>
+    	<div class='add-a-topic-header'>
+                <h3>Add a new topic</h3>
+            </div>
+        <div class='topic-container'>
+            {% for x in all_topics %}
+            <div class='addition-section-header' id='posts-topics{{x.header_id}}'>
+                <h3 id='topics-title-header{{x.header_id}}'><span style='float:right; font-size:2.2rem' id='section-toggle-show{{x.header_id}}'>+</span> <span id='section-toggle-hide{{x.header_id}}' style='display:none; float:right; font-size:2.2rem'>-</span> {{x.topic_name}}</h3>
+            </div>
+            <div class='addition-section-content' style='display:none;' id='posts-topics-content{{x.header_id}}'>
+            <h1>Topic name:</h1>
+            <input type='text' id='topicnamecontent{{x.header_id}}' value="{{x.topic_name}}"/>
+            <div class='message' id='topicmessagevalue{{x.header_id}}'></div>
+            <button href='' class='additional-button' onclick="update_topic_text('{{x.header_id}}', '#topicnamecontent{{x.header_id}}', '#topicmessagevalue{{x.header_id}}', 'topic_name');">Update topic name</button>
+            <h1>Change the the image for this topic</h1>
+                <img src='{{ MEDIA_URL }}{{x.topic_image.url}}' id='topic_image{{x.header_id}}' alt='' />
+                <br />
+                <label for='topicmyfile{{x.header_id}}' id='topiclabel{{x.header_id}}' class="btn btn-primary" style='margin-bottom:2%;'>
+                Choose an image
+                </label>
+                <input type="file" style='display: none;' id="topicmyfile{{x.header_id}}" name="topicmyfile{{x.header_id}}">
+                <br /> 
+                <div class='topiclabel_value{{x.header_id}}'></div>
+                <div class='message' id='topicmessagevalue{{x.header_id}}4'></div>
+                <button href='' id='topicuploadimage{{x.header_id}}' class='additional-button' ">Change the image</button>
+            <h1>Topic description: </h1>
+            <input type='text' id='topicdescriptioncontent{{x.header_id}}' value="{{x.topic_description}}"</p>
+            <div class='message' id='topicdescriptionmessagevalue{{x.header_id}}'></div>
+            <button href='' class='additional-button' onclick="update_topic_text('{{x.header_id}}', '#topicdescriptioncontent{{x.header_id}}', '#topicdescriptionmessagevalue{{x.header_id}}', 'topic_description');">Update Description</button>
+             <button href='' class='delete-button' onclick="delete_topic('{{x.header_id}}');">Delete item</button>
+            </div>
+            <script>
+$( "#topicmyfile{{x.header_id}}" ).change(function() {
+     text_value = $("#topicmyfile{{x.header_id}}").val();
+     $('.topiclabel_value{{x.header_id}}').html("Selected photo: " + text_value );
+
+});
+
+
+ $("#topicuploadimage{{x.header_id}}").click(function() {
+    var data = new FormData();
+    var header_id = {{x.header_id}};
+    var files = $("#topicmyfile{{x.header_id}}").get(0).files[0]; 
+     data.append("file", $("#topicmyfile{{x.header_id}}")[0].files[0]);
+    data.append('csrfmiddlewaretoken', "{{csrf_token}}"); 
+    data.append('header_id', '{{x.header_id}}');
+$.ajax({
+        type: 'POST',
+        url: "update_topic_photo",
+         processData: false,
+                contentType: false,
+                mimeType: "multipart/form-data",
+        data: data,
+        success: function(response) {
+             var obj=JSON.parse(response)["url"];
+            $('#topicmessagevalue{{x.header_id}}').html("Photo has sucessfully been changed to" );
+            $('#topic_image{{x.header_id}}').attr('src', obj);
+        }
+    });
+});
+            $("#posts-topics{{x.header_id}}").click(function() {
+                $("#section-toggle-show{{x.header_id}}").toggle();
+                $("#section-toggle-hide{{x.header_id}}").toggle();
+                $("#posts-topics-content{{x.header_id}}").slideToggle(500);
+            });
+            </script>
+
+            {% endfor %}
+        </div>
+    </div>
+    <div class='display-item' id='display-item-posts-posts' style='display:none;'>
+        <div class='add-post-container' style='display:none;' id='add-new-post-form-container'>
+                <h1>Add a new post</h1>
+                    {{post_form.as_p}}
+                    <input  type="submit" name="submit" onclick="add_a_new_post()" id='add-new-section-submit' value="submit">
+                </div>
+        <div class='add-a-post-header' style='display:none;' >
+                <h3>Add a new post</h3>
+            </div>
+        <div class='post-container' style='display:none;'>
+            {% for x in all_posts %}
+            <div class='addition-section-header' id='post_header{{x.post_id}}'>
+                <h3><span style='float:right; font-size:2.2rem' id='post-toggle-show{{x.post_id}}'>+</span> <span id='post-toggle-hide{{x.post_id}}' style='display:none; float:right; font-size:2.2rem'>-</span> {{x.post_title}}</h3>
+            </div>
+            <div class='edit-post' style='display: none;' id='edit-post{{x.post_id}}'>
+                <h1>Post title: </h1>
+                <input type='text' name='' id='post_title{{x.post_id}}' value='{{x.post_title}}'/> 
+                <button href='' id='' onclick="update_post{{x.post_id}}('post_title', 'post_title{{x.post_id}}')" class='additional-button' ">Update the post title</button>
+                <h1>Post preview text: </h1>
+                <input type='text' name='' id='post_preview_text{{x.post_id}}' value='{{x.post_preview_text}}'/> 
+                <button href='' id='' onclick="update_post{{x.post_id}}('post_preview_text', 'post_preview_text{{x.post_id}}')" class='additional-button' ">Update the post preview text</button>
+                <h1>Post content: </h1>
+                <textarea type='text' name='' id='description{{x.post_id}}' value='{{x.description}}' >{{x.description}}</textarea> 
+                <button href='' id='' onclick="update_post{{x.post_id}}('description', 'description{{x.post_id}}')" class='additional-button' ">Update the post description</button>
+                <h1>Post related topic: </h1>
+                <select id="posttopicid{{x.post_id}}" selected="selected" class='topicvaluepostforsection'>
+                    <option style='background-color:#E2C391;' value="{{x.topic.topic_name}}" selected='selected'>{{x.topic.topic_name}}</option>
+                    {% for x in all_topics %}
+                        <option value="{{x.header_id}}">{{x.topic_name}}</option>
+                    {% endfor %}
+                </select> 
+                <button href='' id='' onclick="update_topic_for_post{{x.post_id}}('#posttopicid{{x.post_id}}')" class='additional-button' ">Update the related topic</button>
+                <br /> 
+                <br />
+                <button href='' class='delete-button' onclick="delete_post('{{x.post_id}}');">Delete item</button>
+            </div> 
+            <script>
+            function update_topic_for_post{{x.post_id}}(input_id) {
+                   var text_text = $(input_id).find(':selected').val();
+                   alert({{x.post_id}} + text_text);
+
+                $(".message").html("");
+                $.ajax({
+
+                    type: 'GET',
+                    url: "{% url 'update_topic_for_post' %}",
+                    data: {
+                        
+                        'header_id': text_text,
+                        'text_value': {{x.post_id}},
+                    },
+                    success: function(data) {
+                        location.reload();
+
+                    }
+                });
+            }
+
+                function update_post{{x.post_id}}(item_to_update, input_id) {
+                            var data = new FormData();
+
+                            data.append('csrfmiddlewaretoken', "{{csrf_token}}"); 
+                            data.append('item_to_update', item_to_update);
+
+                            data.append('post_update', $("#" + input_id).val());
+                            data.append('post_id', {{x.post_id}});
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "{% url 'update_post' %}",
+                                    processData: false,
+                                    contentType: false,
+                                    mimeType: "multipart/form-data",
+                                    data: data,
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
+                            }    
+
+$("#post_header{{x.post_id}}").click(function() {
+    $("#edit-post{{x.post_id}}").slideToggle(300);
+    $("#post-toggle-show{{x.post_id}}").toggle();
+    $("#post-toggle-hide{{x.post_id}}").toggle();
+   
+});
+
+            </script> 
+            {% endfor %}
+        </div>
+    </div>
+    <div class='display-item' id='display-item-new-section' style='display:none;'>
+        <div class='add-form-container' id='add-new-section-form-container'>
+            
+            <h1>Add a new section</h1>
+            {{form.as_p}}
+            <p>
+            <label for="id_section_content">Change the post that this section is linked to</label>
+                <select name="topicvaluepostforsection" class='topicvaluepostforsection'>
+                    <option  value='{{x.post_id}}'>{{x.post.post_title}}</option>
+                    {% for x in all_topics %}
+                    <optgroup label="Topic: {{x.topic_name}}">
+                        {% for i in all_posts %}
+                        {% if i.topic == x %}
+                        <option value='{{i.post_id}}'>{{i.post_title}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                    {% endfor %}
+                </select> 
+             <input  type="submit" name="submit" onclick="add_a_new_section('.topicvaluepostforsection')" id='add-new-section-submit' value="submit">
+        </div>
+
+    </div>
+
+    <div class='display-item' id='display-item-new-topic' style='display:none;'>
+        <div class='add-form-container' id='add-new-topic-form-container'>
+            <h1>Add a new topic</h1>
+            {{form_topic.as_p}}
+            <input  type="submit" name="submit" onclick="add_a_new_topic('.topicvaluepostforsection')" id='add-new-section-submit' value="submit">
+        </div>
+    </div>
+</div>
+<script>
+   
+function add_a_new_section(post_id) {
+            var data = new FormData();
+           
+            data.append("file", $("#id_header_image").get(0).files[0]); 
+            data.append('csrfmiddlewaretoken', "{{csrf_token}}"); 
+            data.append('section_content', $("#id_section_content").val());
+            data.append('section_title', $("#id_section_title").val());
+            var x = $('select[name=topicvaluepostforsection] option').filter(':selected').val();
+            data.append('post_id', x);
+            alert(x);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'add_a_new_section' %}",
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        location.reload();
+                    }
+                });
+            }
+
+function add_a_new_post(){
+    var data = new FormData(); 
+    data.append('csrfmiddlewaretoken', "{{csrf_token}}"); 
+    data.append('post_title', $("#id_post_title").val());
+    data.append('post_preview_text', $("#id_post_preview_text").val());
+    data.append('post_description', $("#id_post_content").val());
+    var x = $('select[name=post_topic] option').filter(':selected').val();
+    data.append('post_topic', x);
+    alert($("#id_post_title").val() + $("#id_post_preview_text").val() +  $("#id_post_content").val() + x);
+    $.ajax({
+                    type: 'POST',
+                    url: "{% url 'add_a_new_post' %}",
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        location.reload();
+
+                    }
+                });
+}
+function add_a_new_topic() {
+            var data = new FormData();
+            data.append("file", $("#id_topic_image").get(0).files[0]); 
+            data.append('csrfmiddlewaretoken', "{{csrf_token}}"); 
+            data.append('topic_description', $("#id_topic_description").val());
+            data.append('topic_name', $("#id_topic_name").val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'add_a_new_topic' %}",
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        location.reload();
+
+                    }
+                });
+            }
+$("#customistation-choice-menu").click(function() {
+    $(".display-item").fadeOut(100);
+    $(".customistation-choice").removeClass('active');
+    $("#customistation-choice-menu").toggleClass('active');
+    $(".item-container").hide()
+    $("#display-item-menu").fadeIn(500);
+    $("#display-item-additional").fadeOut(100);
+    $(".color-item-customise").removeClass('active');
+});
+
+$("#customistation-choice-additional").click(function() {
+    $(".display-item").fadeOut(100);
+    $("#display-item-menu").fadeOut(100);
+    $(".customistation-choice").removeClass('active');
+    $("#customistation-choice-additional").toggleClass('active');
+    $("#display-item-additional").fadeIn(500);
+
+});
+$("#customistation-choice-posts-topics").click(function() {
+    $(".display-item").fadeOut(100);
+    $(".customistation-choice").removeClass('active');
+    $("#customistation-choice-posts-topics").toggleClass('active');
+    $("#display-item-posts-topics").fadeIn(500);
+    $("#display-item-menu").fadeOut(100);
+    $("#display-item-additional").fadeOut(100);
+
+});
+$("#customistation-choice-posts-posts").click(function() {
+    $(".display-item").fadeOut(100);
+    $(".post-container").fadeIn();
+    $(".add-a-post-header").fadeIn();
+     $("#display-item-posts-posts").fadeIn(500);
+    $(".add-post-container").fadeOut(100);
+    $(".customistation-choice").removeClass('active');
+    $("#customistation-choice-posts-posts").toggleClass('active');
+    $("#display-item-menu").fadeOut(100);
+    $("#display-item-additional").fadeOut(100);
+
+
+});
+$("#customistation-choice-header").click(function() {
+    $(".item-container").fadeIn(100);
+    $(".display-item").fadeOut(100);
+    $(".customistation-choice").removeClass('active');
+    $("#customistation-choice-header").toggleClass('active');
+    $("#display-item-additional").fadeOut(100);
+    $("#display-item-header").fadeIn(500);
+
+});
+$(".add-a-section-header").click(function() {
+    $(".display-item").fadeOut(100);
+    $("#display-item-new-section").fadeIn(500);
+});
+
+
+$(".add-a-topic-header").click(function() {
+    $(".display-item").fadeOut(100);
+    $("#display-item-new-topic").fadeIn(500);
+});
+
+
+$(".add-a-post-header").click(function() {
+    $(".display-item").fadeOut(100);
+    $(".add-a-post-header").fadeOut(100);
+    $(".post-container").fadeOut(100);
+    $("#display-item-posts-posts").fadeIn(500);
+    $(".add-post-container").fadeIn(500);
+
+});
+function change_color(pass_url, color_value, message_value) {
+    var color_value = $(color_value).val();
+    var color_value_new = color_value.substring(1, color_value.length);
+    var test_new = color_value_new + "message";
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'change_color' %}",
+        data: {
+            'color_value_new': color_value_new,
+            'pass_url': pass_url,
+
+        },
+        success: function(data) {
+            location.reload();
+        }
+    });
+}
+
+function change_text(pass_url, text_value, message_value) {
+    var text_value = $(text_value).val();
+    $(".message").html("");
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'change_text' %}",
+        data: {
+            'new_text_value': text_value,
+            'pass_url': pass_url,
+        },
+        success: function(data) {
+            location.reload();
+        }
+    });
+}
+
+function change_topic_text(header_id, text_value, message_value, item_to_update) {
+    var text_value = $(text_value).val();
+    $(".message").html("");
+    $.ajax({
+
+        type: 'GET',
+        url: "{% url 'update_topic' %}",
+        data: {
+            'new_text_value': text_value,
+            'header_id': header_id,
+            'item_to_update': item_to_update,
+        },
+        success: function(data) {
+            location.reload();
+                }
+
+    });
+}
+
+function update_topic_text(header_id, text_value, message_value, item_to_update) {
+    var text_value = $(text_value).val();
+    $(".message").html("");
+    $.ajax({
+
+        type: 'GET',
+        url: "{% url 'update_topic_text' %}",
+        data: {
+            'new_text_value': text_value,
+            'header_id': header_id,
+            'item_to_update': item_to_update,
+        },
+        success: function(data) {
+           location.reload();
+        }
+        
+    });
+}
+function change_topic_text_select(header_id, text_value, message_value, item_to_update) {
+       var text_value = $(text_value).val();
+       var text_text = $(text_value).find('option:selected').text(); 
+    $(".message").html("");
+    $.ajax({
+
+        type: 'GET',
+        url: "{% url 'update_topic_select' %}",
+        data: {
+            'new_text_value': text_value,
+            'header_id': header_id,
+            'item_to_update': item_to_update,
+        },
+        success: function(data) {
+            location.reload();
+
+        }
+    });
+}
+
+
+function delete_section(header_id) {
+    $(".message").html("");
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'delete_section' %}",
+        data: {
+            'header_id': header_id,
+        },
+        success: function(data) {
+            location.reload();
+        }
+    });
+}
+
+function delete_topic(header_id) {
+    $(".message").html("");
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'delete_topic' %}",
+        data: {
+            'header_id': header_id,
+        },
+        success: function(data) {
+            location.reload();
+        }
+    });
+}
+function delete_post(header_id) {
+    $(".message").html("");
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'delete_post' %}",
+        data: {
+            'header_id': header_id,
+        },
+        success: function(data) {
+            location.reload();
+        }
+    });
+}
+</script>
+{% endblock %}

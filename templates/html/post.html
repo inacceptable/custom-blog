@@ -1,0 +1,33 @@
+{% extends "html/template.html" %}
+{% block content %}
+{% load static %}
+<div class='page-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
+    {% include "html/navigation.html" %}
+</div>
+
+ <div id='navigation-wrapper' style='border:20px solid #7F95D1; padding:3%; box-shadow: 5px 10px #888888; border-radius: 6px;
+' class='wrapper'> 
+    
+{% for x in get_posts %}
+<div class='post-container' > 
+        <div class="post-preview">
+            <h1 class='display-5'>{{x.post_title}} </h1>
+        </div> 
+        <div class="post-preview{{x.post_id}}"> 
+            <p class='lead'>{{x.post_preview_text}}</p>
+        </div>
+        <div class='post-content' id='post-content{{x.post_id}}' style='background-color:white;'>
+            {{x.description | safe}} 
+        </div> 
+        
+        <script>
+        </script>
+</div>
+<script>
+    
+</script>
+{% endfor %}  
+
+
+{% endblock %}
+

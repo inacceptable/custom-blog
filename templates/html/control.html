@@ -1,0 +1,401 @@
+{% extends "html/template.html" %}
+{% block content %}
+{% load static %}
+<div class='control-container'>
+    <div class='control-header text-center'>
+        <h1>Control Panel</h1>
+    </div>
+    <div class='control-wrapper'>
+        <div class='control-side-panel'>
+            <ul class=''>
+                <li class="menu-button"><a class='item-header' id='navigation-menu-button'><span id='arrow-down1' style='display:none;'>● </span>Navigation Menu</a>
+                    <ul id='navigation-menu' class='drop-down' style='display:none'>
+                        <li class='item'><a class='object' id='object-1'>Page navigation bar text color</a></li>
+                        <li class='item'><a class='object' id='object-2'>Social section</a></li>
+                        <li class='item'><a class='object' id='object-3'>Page navigation background color</a></li>
+                        <li class='item'><a class='object' id='object-4'>Page navigation button background color</a></li>
+                        <li class='item'><a class='object' id='object-5'>Page navigation sub buttons font color</a></li>
+                        <li class='item'><a class='object' id='object-6'>Page navigation sub buttons background color</a></li>
+                       
+                    </ul>
+                </li>
+                 <li class='menu-button'><a class='item-header' id='home-page-menu-button'><span id='arrow-down2' style='display:none;'>● </span>Customise website page topics</a>
+                    <ul id="home-menu" class='drop-down' style='display:none;'>
+                           {% for i in all_topics %}
+                            <li class='navigation-list'>{{i.topic_name}}</li>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </li>
+                <li class='menu-button'><a class='item-header' id='home-page-menu-button'><span id='arrow-down2' style='display:none;'>● </span>Home Page Header</a>
+                    <ul id="home-menu" class='drop-down' style='display:none;'>
+                        <li class='item'><a class='object' id='object-8'>Header border color</a></li>
+                        <li class='item'><a class='object' id='object-9'>Header title text</a></li>
+                        <li class='item'><a class='object' id='object-10'>Header slogan text</a></li>
+                        <li class='item'><a class='object' id='object-11'>Header background color</a></li>
+                        <li class='item'><a class='object' id='object-12'>Header slogan background color</a></li>
+                        <li class='item'><a class='object' id='object-13'>Header slogan font color</a></li>
+                        <li class='item'><a class='object' id='object-14'>Header title font color</a></li>
+                    </ul>
+                </li>
+                <li class='menu-button'><a class='item-header' id='addition-section-menu-button'><span id='arrow-down3' style='display:none;'>● </span>Home page addition section content</a>
+                    <ul id="addition-section-menu" class='drop-down' style='display:none'>
+                        <li class='item'><a class='object' id='object-15'>Manage sections</a></li>
+                        <li class='item'><a class='object' id='object-16'>Section button background color</a></li>
+                        <li class='item'><a class='object' id='object-17'>Section button font color</a></li>
+                        <li class='item'><a class='object' id='object-18'>Section background color</a></li>
+                        <li class='item'><a class='object' id='object-19'>Section header font color</a></li>
+                        <li class='item'><a class='object' id='object-20'>Section text font color</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class='control-change-panel col ' style='display:none;'>
+            <div class='object-panel' id='object-1-panel' style="display: none;">
+                <h1 class='display-6'>Change navigation button text color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' value='{{changes.navigation_button_text_color}}' type="color" id='colorchange1' />
+                <input type='text' name='colorpicker' id='colorpicker1' class='colorpicker-value' />
+                <br />
+                <button type="submit" id='navigation_button_text_color' class="btn btn-dark change-color" onclick="change_color('navigation_button_text_color', '#colorpicker1');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-2-panel' style="display: none;">
+                <h1>Test 2</h1>
+            </div>
+            <div class='object-panel' id='object-3-panel' style="display: none;">
+                <h1 class='display-6'>Change the navigation bar background color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.navigation_bar_background_color}}' id='colorchange2' />
+                <input type='text' name='colorpicker' id="colorpicker2" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='navigation_bar_background_color' class="btn btn-dark change-color" onclick="change_color('navigation_bar_background_color', '#colorpicker2');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-4-panel' style="display: none;">
+                <h1 class='display-6'>Change the navigation button background-color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.navigation_button_background_color}}' id='colorchange3' />
+                <input type='text' name='colorpicker'  id="colorpicker3" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='navigation_button_background_color' class="btn btn-dark change-color" onclick="change_color('navigation_button_background_color', '#colorpicker3');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-5-panel' style="display: none;">
+                <h1 class='display-6'>Change the sub navigation buttons text color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' value='{{changes.navigation_bar_sub_button_font_color}}' type="color" id='colorchange4' />
+                <input type='text' name='colorpicker'   id="colorpicker4" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='navigation_bar_sub_button_font_color' class="btn btn-dark change-color" onclick="change_color('navigation_bar_sub_button_font_color', '#colorpicker4');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-6-panel' style="display: none;">
+                <h1 class='display-6'>Change the sub navigation buttons background color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.navigation_bar_sub_buttons_background_color}}' id='colorchange5' />
+                <input type='text' name='colorpicker'   id="colorpicker5" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='navigation_bar_sub_buttons_background_color' class="btn btn-dark change-color" onclick="change_color('navigation_bar_sub_buttons_background_color', '#colorpicker5');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel'  id='object-7-panel' style="display: none; text-align:left;">
+                <h1 class='display-6'>Change the topics for the blog</h1>
+                <hr /> 
+                <div class='message' style='padding:1%; display: none;margin-bottom:1%; '></div>
+                <div class='current-topics-container'> 
+                
+                <p class='font-weight-bolder'>Current topics</p>
+                {% for i in all_topics %}
+                    <li class="" style='display: block; margin-bottom:3%;'>
+                        <input type='text' id='update-value{{i.header_id}}' value='{{i.topic_name}}' class='topic-item-link'> 
+                        <a class='update-delete-button' id='update-topic{{i.header_id}}'>Update</a> 
+                        <a class='update-delete-button' id='delete-topic{{i.header_id}}'>Delete</a>
+                    </li> 
+            <script>
+             $("#update-topic{{i.header_id}}").click(function() {
+                var text_value = $('#update-value{{i.header_id}}').val();
+                var header_id = {{i.header_id}}
+                $(".message").html("");
+                $.ajax({
+                    type: 'GET',
+                    url: "{% url 'update_topic' %}",
+                    data: {
+                        'new_text_value': text_value,
+                        'header_id': header_id,
+                    },
+                    success: function(data) {
+                       if ($('.message').is(':visible')) {
+                        $(".message").slideUp();
+                        $(".message").hide();
+                        }
+                        else{
+                            $(".message").html("Topic change to: " + text_value);
+                        $(".message").slideDown();
+                        }         
+                        $(".message").slideDown();   
+                    }
+                });
+            });     
+            </script>
+        {% endfor %}
+            </div>
+                <div class='add-topic-section'> 
+                    <p class='font-weight-bolder'>Add a new topic: </p>
+                    <input type='text' value=''/> 
+                     <button type="submit" id='navigation_bar_sub_buttons_background_color' class="btn btn-dark change-color" onclick="change_color('navigation_bar_sub_buttons_background_color', '#colorpicker5');">Add topic</button>
+                </div> 
+        
+            </div>
+            <div class='object-panel' id='object-8-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header border color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.header_border_background_color}}' id='colorchange6' />
+                <input type='text' name='colorpicker' id="colorpicker6" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='header_border_background_color' class="btn btn-dark change-color" onclick="change_color('header_border_background_color', '#colorpicker6');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-9-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header title text: </h1>
+                <hr />
+                <br />
+                <input class='title-text' type="text" id='title-text' />
+                <br />
+                <button type="submit" id='header_title' class="btn btn-dark change-color" onclick="change_text('header_title', '#title-text');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-10-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header slogan text: </h1>
+                <hr />
+                <br />
+                <input class='slogan-text' type="text" id='slogan-text' />
+                <br />
+                <button type="submit" id='header_title' class="btn btn-dark change-color" onclick="change_text('header_slogan', '#slogan-text');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-11-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header background color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.header_background_color}}' id='colorchange7' />
+                <input type='text' name='colorpicker' id="colorpicker7" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='header_background_color' class="btn btn-dark change-color" onclick="change_color('header_background_color', '#colorpicker7');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-12-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header slogan background color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.header_slogan_background_color}}' id='colorchange8' />
+                <input type='text' name='colorpicker' id="colorpicker8" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='header_slogan_background_color' class="btn btn-dark change-color" onclick="change_color('header_slogan_background_color', '#colorpicker8');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-13-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header slogan font color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' value='{{changes.header_slogan_font_color}}'  type="color" id='colorchange9' />
+                <input type='text' name='colorpicker' id="colorpicker9" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='header_slogan_font_color' class="btn btn-dark change-color" onclick="change_color('header_slogan_font_color', '#colorpicker9');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-14-panel' style="display: none;">
+                <h1 class='display-6'>Change the page header title font color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.header_title_font_color}}'   id='colorchange10' />
+                <input type='text' name='colorpicker' id="colorpicker10" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='header_title_font_color' class="btn btn-dark change-color" onclick="change_color('header_title_font_color', '#colorpicker10');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-15-panel' style="display: none;">
+                <h1>Test 15</h1>
+            </div>
+            <div class='object-panel' id='object-16-panel' style="display: none;">
+                <h1 class='display-6'>Change the section button background color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.section_button_background_color}}' id='colorchange11' />
+                <input type='text' name='colorpicker' id="colorpicker11" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='section_button_background_color' class="btn btn-dark change-color" onclick="change_color('section_button_background_color', '#colorpicker11');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-17-panel' style="display: none;">
+                <h1 class='display-6'>Change the section button font color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.section_button_font_color}}' id='colorchange12' />
+                <input type='text' name='colorpicker'  id="colorpicker12" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='section_button_font_color' class="btn btn-dark change-color" onclick="change_color('section_button_font_color', '#colorpicker12');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-18-panel' style="display: none;">
+                <h1 class='display-6'>Change the section background color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.section_background_color}}' id='colorchange13' />
+                <input type='text' name='colorpicker' id="colorpicker13" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='section_background_color' class="btn btn-dark change-color" onclick="change_color('section_background_color', '#colorpicker13');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-19-panel' style="display: none;">
+                <h1 class='display-6'>Change the section header font color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.section_header_font_color}}' id='colorchange14' />
+                <input type='text' name='colorpicker' id="colorpicker14" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='section_header_font_color' class="btn btn-dark change-color" onclick="change_color('section_header_font_color', '#colorpicker14');">Submit</button>
+                <div class='message'></div>
+            </div>
+            <div class='object-panel' id='object-20-panel' style="display: none;">
+                <h1 class='display-6'>Change the section text font color: </h1>
+                <hr />
+                <label for="colorpicker">
+                    <p>Color Picker:</p>
+                </label>
+                <br />
+                <input class='colorpicker' type="color" value='{{changes.section_text_font_color}}' id='colorchange15' />
+                <input type='text' name='colorpicker' id="colorpicker15" class='colorpicker-value' />
+                <br />
+                <button type="submit" id='section_text_font_color' class="btn btn-dark change-color" onclick="change_color('section_text_font_color', '#colorpicker15');">Submit</button>
+                <div class='message'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$("#navigation-menu-button").click(function() {
+    $("#navigation-menu").slideToggle();
+    $("#arrow-down1").toggle()
+    $("#navigation-menu-button").toggleClass("colorchange");
+    if ($('.object-panel').is(':visible')) {
+        $(".control-change-panel").hide(200);
+    }
+
+});
+
+$("#home-page-menu-button").click(function() {
+    $("#home-menu").slideToggle();
+    $("#arrow-down2").toggle()
+    $("#home-page-menu-button").toggleClass("colorchange");
+    if ($('.object-panel').is(':visible')) {
+        $(".control-change-panel").hide(200);
+    }
+});
+$("#addition-section-menu-button").click(function() {
+    $("#addition-section-menu").slideToggle();
+    $("#arrow-down3").toggle()
+    $("#addition-section-menu-button").toggleClass("colorchange");
+    if ($('.object-panel').is(':visible')) {
+        $(".control-change-panel").hide(200);
+    }
+});
+
+
+function change_color(pass_url, color_value) {
+    var color_value = $(color_value).val();
+    var color_value_new = color_value.substring(1, color_value.length);
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'change_color' %}",
+        data: {
+            'color_value_new': color_value_new,
+            'pass_url': pass_url
+        },
+        success: function(data) {
+            $(".message").html("The color has been changed to: #" + color_value_new);
+        }
+    });
+}
+
+function change_text(pass_url, text_value) {
+    var text_value = $(text_value).val();
+    $(".message").html("");
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'change_text' %}",
+        data: {
+            'new_text_value': text_value,
+            'pass_url': pass_url,
+        },
+        success: function(data) {
+            $(".message").html("The page text has been changed to: " + text_value);
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+{% for i in page_range %}
+
+$("#object-{{i}}").click(function() {
+    $(".object-panel").hide();
+
+    $(".control-change-panel").show(500);
+    $("#object-{{i}}-panel").show(500);
+}); 
+{% endfor %}
+
+{% for i in color_count %}
+$("#colorchange{{i}}").on('change', function() { // 2nd (A)
+    $('#colorpicker{{i}}').val($('#colorchange{{i}}').val());
+}); {% endfor %}
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "html/template.html" %}
+{% block content %}
+{% load static %}
+<div class='page-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
+    {% include "html/navigation.html" %}
+
+    
+    <div class='wrapper'> 
+    <div class='home-page-header' style='background-color:{{changes.header_background_color}}; padding:0;  border-top: 60px solid {{changes.header_slogan_top_background_color}}; border-right:0.5px solid  {{changes.header_border_background_color}}; border-left:0.5px solid {{changes.header_border_background_color}};'>
+        <h1 style='color:{{changes.header_title_font_color}}'>
+        {{changes.header_title}}</h1>
+        <div class='slogan-container col' style='background-color: {{changes.header_slogan_background_color}}; box-shadow: 0 8px 6px -6px black;'>
+            <p class='lead text-left fs-2' style="color:{{changes.header_slogan_font_color}}">{{changes.header_slogan}}</p>
+        </div> 
+
+    </div>
+    <div class='page-sections'>
+        {% for x in page_section %}
+        <div class='section card' style='background-color:{{changes.section_background_color}}; border:20px solid {{changes.section_border_color}};'>
+            <div class='image-container'> 
+            <img src="{{ MEDIA_URL }}{{x.header_image.url}}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" style='color:{{changes.section_header_font_color}}'>{{x.section_title}}</h5>
+                <p class="card-text" style='color:{{changes.section_text_font_color}}'>{{x.section_content}}</p>
+            </div>
+            <a href="{% url 'post' %}?post={{x.post_id}}" class="btn" style='background-color:{{changes.section_button_background_color}}; color:{{changes.section_button_font_color}}'>{{x.post}}</a>
+        </div>
+        {% endfor %} 
+    </div>
+        </div>
+{% endblock %}

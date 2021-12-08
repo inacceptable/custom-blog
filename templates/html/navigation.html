@@ -1,0 +1,86 @@
+{% load static %}
+<div class="nav-button-container" style='background-color: {{changes.navigation_bar_background_color}};'>
+        <div id='navigation-stack-button' class='col col-sm-40' style='display: flex;
+  align-items: center; justify-content: center; font-size:1.1em;  color:  {{changes.navigation_button_text_color}}; background-color:{{changes.navigation_button_background_color}}'>Menu ▼</div>
+  
+        <div class='social-share' style='text-align:right'>
+            <a href=""><img style="width:30px; padding-top:0;" src="{% static 'images/facebook.png' %}" alt=""/></a>
+            <a href=""><img style="width:30px; padding-top:0;" src="{% static 'images/reddit.png' %}" alt=""/></a>
+            <a href=""><img style="width:30px; padding-top:0;" src="{% static 'images/twitter.png' %}" alt=""/></a>
+        </div>
+    </div>
+
+    <nav  id='navigation-buttons' style="display:none; ">
+         
+        <div class='sub-nav'>
+            {% for x in topic_item %}
+            <div  id='nav-button{{x.header_id}}' class='nav-button' style='background-color:{{changes.navigation_bar_sub_buttons_background_color}}; color:{{changes.navigation_bar_sub_button_font_color}}; border:0;'>{{x.topic_name}}</div>
+            {% endfor %}
+        </div>
+        {% for x in topic_item %}
+        <div style="display: none;" class="topic-description" id='topic-description{{x.header_id}}'>
+        <div class='newcard'>
+            <h1 class='display-6'>{{x.topic_description}}</h1>
+            <img src="/media/{{ x.topic_image}}" alt="" />
+            <br /> 
+            <div class='topic-button-container'>
+                <div class="topicnavbutton" id="read-more{{x.header_id}}"> <a href="{% url 'topic' %}?topic={{x.header_id}}" role="button">Check out more</a></div>
+            <div class="topicnavbutton" id='close-nav-button{{x.header_id}}' href="#" role="button">Close</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+        {% endfor %}
+
+    </nav>
+
+    <script>
+    {% for x in topic_item %}
+
+    $("#nav-button{{x.header_id}}").click(
+        function() {
+            $(".nav-button").removeClass('bolder');
+            if ($('.topic-description').is(':visible')) {
+                $(".topic-description").slideUp(200);
+                $("#topic-description{{x.header_id}}").slideIn(200);
+            }
+            if ($('.topic-description').is(':visible')) {
+                $(".topic-description").slideUp(200);
+                $("#topic-description{{x.header_id}}").slideIn(200);
+            }
+           else{
+                $("#topic-description{{x.header_id}}").slideDown(200);
+           }
+            $("#nav-button{{x.header_id}}").toggleClass('bolder');
+              $(".wrapper").fadeOut(300);  
+            $(".page-container").addClass('make-bigger');   
+        }); 
+    {% endfor %}
+    </script>
+    {% for x in topic_item %}
+    
+    {% endfor %}
+    <script>
+    {% for x in topic_item %}
+    $("#close-nav-button{{x.header_id}}").click( 
+    function() {
+        $("#topic-description{{x.header_id}}").slideUp();
+        $(".nav-button").removeClass('bolder');
+
+    }); 
+    {% endfor %}
+    </script>
+    <script>
+    $("#navigation-stack-button").click(function() {
+        $("#navigation-buttons").slideToggle(500);
+        $(".topic-description:visible").hide(400);
+        $(".nav-button").removeClass('bolder');
+         if ($('.wrapper').is(':hidden')) {
+            $(".wrapper").fadeIn(300);  
+            $(".page-container").removeClass('make-bigger');   
+        }   
+
+    });
+    </script>
+    </div>

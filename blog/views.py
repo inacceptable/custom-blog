@@ -41,7 +41,10 @@ def get_topic(request):
 
 def post(request):
 	test = request.GET['post']
-	changes = blog_change.objects.get()
+	try:
+		changes = blog_change.objects.get()
+	except: 
+		print("Not working!")
 	x = blog_post.objects.get(post_id=test)
 	post_item = blog_post.objects.all() 
 	topic_item = topic.objects.all() 

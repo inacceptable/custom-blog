@@ -13,7 +13,10 @@ from django.http import JsonResponse
 
 
 def home(request):
-	changes = blog_change.objects.get()
+	try:
+		changes = blog_change.objects.get()
+	except: 
+		print("Not working!")
 	topic_item = topic.objects.all() 
 	page_section = home_page_section.objects.all() 
 
@@ -29,7 +32,10 @@ def home(request):
 
 def get_topic(request): 
 	test = request.GET['topic']
-	changes = blog_change.objects.get()
+	try:
+		changes = blog_change.objects.get()
+	except: 
+		print("Not working!")
 	topic_item = topic.objects.all() 
 	get_posts = blog_post.objects.filter(topic=test)
 	context = { 
@@ -61,7 +67,10 @@ def controladmin(request):
 	all_topics = topic.objects.all()
 	page_range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 	color_count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-	changes = blog_change.objects.get()
+	try:
+		changes = blog_change.objects.get()
+	except: 
+		print("Not working!")
 	page_section = home_page_section.objects.all() 
 	all_posts = blog_post.objects.all() 
 	form = section_form() 

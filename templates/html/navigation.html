@@ -4,7 +4,7 @@
   align-items: center; justify-content: center; font-size:1.1em;  color:  {{changes.navigation_button_text_color}}; background-color:{{changes.navigation_button_background_color}}'>Menu ▼</div>
   
         <div class='social-share' style='text-align:right'>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%custom-blog.herokuapp.com"><img style="width:30px; padding-top:0;" src="{% static 'images/facebook.png' %}" alt=""/></a>
+            <a href=""><img style="width:30px; padding-top:0;" src="{% static 'images/facebook.png' %}" alt=""/></a>
             <a href=""><img style="width:30px; padding-top:0;" src="{% static 'images/reddit.png' %}" alt=""/></a>
             <a href=""><img style="width:30px; padding-top:0;" src="{% static 'images/twitter.png' %}" alt=""/></a>
         </div>
@@ -73,13 +73,14 @@
     </script>
     <script>
     $("#navigation-stack-button").click(function() {
-        $("#navigation-buttons").slideToggle();
+        $("#navigation-buttons").slideToggle(500);
         $(".topic-description:visible").hide(400);
         $(".nav-button").removeClass('bolder');
          if ($('.wrapper').is(':hidden')) {
             $(".wrapper").fadeIn(300);  
             $(".page-container").removeClass('make-bigger');   
         }   
+
     });
     </script>
     </div>

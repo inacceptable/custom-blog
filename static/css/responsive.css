@@ -5,7 +5,7 @@
 		grid-template-columns: 95%;
 	}
 	.item-container{
-		grid-template-columns: 90%;
+		grid-template-columns: 100%;
 		margin: 0 auto;
 		margin-top: 3%;
 
@@ -22,6 +22,7 @@
 	}
 	.customisation-wrapper{
 		width: 90%;
+		padding: 1%;
 	}
 	.page-sections
 	{
@@ -47,7 +48,6 @@
 }
 @media only screen and (max-width: 900px)
 {
-
 	.home-page-header
 	{
 		width: 100%;
@@ -59,6 +59,10 @@
 	{
 		width: 100%;
 		padding: 0;
+	}
+	.topic-description h1{
+		font-size: 3em;
+		font-weight:normal;
 	}
 	.page-container img{
 		width: 40%;
@@ -83,7 +87,7 @@
 	}
 	.topic-description
 	{
-		width: 90%;
+		width: 98%;
 		margin: 0 auto;
 	}
 	.sub-nav
@@ -115,6 +119,7 @@
 {
 	width: 90%;
 }
+
 }
 @media only screen and (max-width: 1000px)
 {
@@ -134,6 +139,15 @@
 .new-button
 {
 	width: 90%;
+}
+.add-a-section-header, .add-a-topic-header, .add-a-post-header
+{
+	width: 95%;
+}
+.addition-section-header
+{
+	margin-bottom: 1%;
+	width: 90;
 }
 }
 

@@ -415,7 +415,7 @@ $.ajax({
             <script>
             function update_topic_for_post{{x.post_id}}(input_id) {
                    var text_text = $(input_id).find(':selected').val();
-                   alert({{x.post_id}} + text_text);
+                
 
                 $(".message").html("");
                 $.ajax({
@@ -510,7 +510,6 @@ function add_a_new_section(post_id) {
             data.append('section_title', $("#id_section_title").val());
             var x = $('select[name=topicvaluepostforsection] option').filter(':selected').val();
             data.append('post_id', x);
-            alert(x);
 
                 $.ajax({
                     type: 'POST',
@@ -533,7 +532,6 @@ function add_a_new_post(){
     data.append('post_description', $("#id_post_content").val());
     var x = $('select[name=post_topic] option').filter(':selected').val();
     data.append('post_topic', x);
-    alert($("#id_post_title").val() + $("#id_post_preview_text").val() +  $("#id_post_content").val() + x);
     $.ajax({
                     type: 'POST',
                     url: "{% url 'add_a_new_post' %}",

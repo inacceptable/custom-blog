@@ -5,9 +5,8 @@
     {% include "html/navigation.html" %}
 </div>
 
- <div id='navigation-wrapper' style='border:20px solid #7F95D1; padding:3%; box-shadow: 5px 10px #888888; border-radius: 6px;
-' class='wrapper'> 
-    
+ <div id='post-wrapper' style='border:20px solid #7F95D1; padding:3%; box-shadow: 5px 10px #888888; border-radius: 6px;
+' class='postwrapper'> 
 {% for x in get_posts %}
 <div class='post-container' > 
         <div class="post-preview">
@@ -28,6 +27,8 @@
 </script>
 {% endfor %}  
 
+</div>
+    
 
 {% endblock %}
 

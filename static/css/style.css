@@ -18,16 +18,17 @@ body{
     grid-template-columns: 40% 60%;
 
 }
+.postwrapper{
+    width: 80%;
+    margin: 0 auto;
+}
 .post-container
 {
     width: 80%;
     margin: 0 auto;
     overflow: hidden;
 }
-.post-content
-{
-    overflow: hidden;
-}
+
 .view-post-button
 {
     padding: 1px;

@@ -1,11 +1,10 @@
-html, body {
-  margin: 0;
-  height: 100%;
-  overflow: hidden; 
-  
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body{
     overflow-y: scroll;
+    font-family: 'Roboto', sans-serif;
+    
+
 }
 
 .wrapper
@@ -53,11 +52,12 @@ body{
 
 .page-container {
 
-    width: 100%;
+    width: 90%;
     text-align: center;
     margin-bottom: 4%;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    margin: 0 auto;
     padding-top: 0;
     padding: 1%;
 }
@@ -79,11 +79,11 @@ body{
 .nav-button-container {
     padding: 1%;
     text-align: left;
-    width: 100%;
+    width: 90%;
     display: grid;
     grid-template-columns: 60%  40%;
     box-shadow: 0 0 10px 5px;
-
+    margin: 0 auto;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     margin-bottom: 1%;
@@ -167,7 +167,7 @@ width: 100%;
 #navigation-buttons {
     text-align: left;
      margin-top: 0.5%;
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
     }
 
@@ -253,7 +253,8 @@ width: 100%;
     width: 90%;
     border-radius: 5px;
     background-color: white;
-font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 2em;
 }
 
 #navigation-stack-button:hover {
@@ -268,7 +269,9 @@ font-family: 'Quicksand', sans-serif;
     grid-row-gap: 15px;
     grid-column-gap: 5px;
 }
-
+.social-share{
+    text-align: right;
+}
 .social-image img{
     width: 5px;
     height: 5px;

@@ -4,16 +4,12 @@
 <div class='page-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
     {% include "html/navigation.html" %}
 
-    
-    <div class='wrapper'> 
-    <div class='home-page-header' style='background-color:{{changes.header_background_color}}; padding:0;  border-top: 60px solid {{changes.header_slogan_top_background_color}}; border-right:0.5px solid  {{changes.header_border_background_color}}; border-left:0.5px solid {{changes.header_border_background_color}};'>
-        <h1 style='color:{{changes.header_title_font_color}}'>
-        {{changes.header_title}}</h1>
-        <div class='slogan-container col' style='background-color: {{changes.header_slogan_background_color}}; box-shadow: 0 8px 6px -6px black;'>
-            <p class='lead text-left fs-2' style="color:{{changes.header_slogan_font_color}}">{{changes.header_slogan}}</p>
-        </div> 
-
+    <div class='home-page-header'>
+        <h1 style='color:{{changes.header_title_font_color}}'>{{changes.header_title}}</h1>
+        <h3 class='fs-2'  style="color:{{changes.header_slogan_font_color}}; text-align: left; width:60%; margin-left: 1%; background-color:{{changes.header_slogan_background_color}}">{{changes.header_slogan}}</h3>
+        
     </div>
+    <div class='wrapper'> 
     <div class='page-sections'>
         {% for x in page_section %}
         <div class='section card' style='background-color:{{changes.section_background_color}}; border:20px solid {{changes.section_border_color}};'>

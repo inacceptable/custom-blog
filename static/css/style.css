@@ -3,18 +3,13 @@
 body{
     overflow-y: scroll;
     font-family: 'Roboto', sans-serif;
-    
-
 }
 
 .wrapper
 {
     width: 90%;
     margin: 0 auto;
-    display: grid;
-    margin-top: 5%;
-    grid-gap: 30px;
-    grid-template-columns: 40% 60%;
+    margin-top: 2%;
 
 }
 .postwrapper{
@@ -217,16 +212,13 @@ width: 100%;
 }
 
 .home-page-header {
-    padding-left: 0;
-    text-align: center;
-    width: 100%;
+    text-align: left;
+    width: 92%;
     padding-right: 0;
     border-radius: 3px;
-    min-height: 300px;
-    max-height: 300px;
     font-family: arial;
+    margin: 0 auto;
     padding-bottom: 0;
-    position: relative;
 }
 .home-page-header h1{
     font-size: 3rem;
@@ -234,16 +226,7 @@ width: 100%;
     font-weight: lighter;
     text-align: left;
 }
-.slogan-container {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 3%;
-    background-color: black;
-    position: absolute;
-    padding: 3%;
-    bottom: 0px;
-    color: white;
-}
+
 .card-title
 {
     font-size: 1.8em;
@@ -263,11 +246,13 @@ width: 100%;
 
 .page-sections {
     display: grid;
-    grid-template-columns: 49% 49%;
+    width: 98%;
+    margin: 0 auto;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     justify-content: center;
     margin-bottom: 5%;
     grid-row-gap: 15px;
-    grid-column-gap: 5px;
+    grid-column-gap: 1%;
 }
 .social-share{
     text-align: right;

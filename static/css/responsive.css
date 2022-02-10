@@ -1,6 +1,6 @@
 @media only screen and (max-width: 1200px)
 {
-	
+		
 	.wrapper{
 		grid-template-columns: 95%;
 	}
@@ -38,6 +38,10 @@
 		margin-top: 5%;
 		margin-bottom: 10%;
 		margin-left: 5%;
+	}
+	.home-page-header h3
+	{
+		width: 88%;
 	}
 	.wrapper
 	{

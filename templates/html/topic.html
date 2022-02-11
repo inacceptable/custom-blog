@@ -1,39 +1,29 @@
 {% extends "html/template.html" %}
 {% block content %}
 {% load static %}
-<div class='page-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
+<div class='topic-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
     {% include "html/navigation.html" %}
-</div>
-
- <div id='navigation-wrapper' class='wrapper'> 
-    <div class='home-page-header' style='background-color:{{changes.header_background_color}}; padding:0;  border-top: 60px solid {{changes.header_slogan_top_background_color}}; border-right:0.5px solid  {{changes.header_border_background_color}}; border-left:0.5px solid {{changes.header_border_background_color}};'>
-        <h1 style='color:{{changes.header_title_font_color}}'>
-        {{changes.header_title}}</h1>
-        <div class='slogan-container col' style='background-color: {{changes.header_slogan_background_color}}; box-shadow: 0 8px 6px -6px black;'>
-            <p class='lead text-left fs-2' style="color:{{changes.header_slogan_font_color}}">{{changes.header_slogan}}</p>
-        </div> 
-
+    <div class='home-page-header'>
+        <h1 style='color:{{changes.header_title_font_color}}'>{{changes.header_title}}</h1>
+        <h3 class='fs-2' style="color:{{changes.header_slogan_font_color}}; text-align: left; margin-left: 1%; background-color:{{changes.header_slogan_background_color}}">{{changes.header_slogan}}</h3>
     </div>
-<div class=''>
-{% for x in get_posts %}
-<div class='topic-post-item'> 
-		<div class="post-preview">
-			<h1 class='display-5'>{{x.post_title}} </h1>
-		</div> 
-		<div class="post-preview{{x.post_id}}"> 
-			<p class='lead'>{{x.post_preview_text}}</p>
-		</div>
-		<div class='post-content' id='post-content{{x.post_id}}' style='display:none; background-color:white;'>
-			{{x.description | safe}} 
-		</div> 
-		<a class="view-post-button view_post{{x.post_id}}" style='background-color: black; color:white; text-decoration: none; padding:1%; border-radius:6px' id="post{{x.post_id}}" href="{% url 'post' %}?post={{x.post_id}}" role="button">Read more</a>
-		
-</div>
-<script>
-	
-</script>
-{% endfor %}  
+    <div class='topic-post-item-container'>
+        {% for x in get_posts %}
+        <div class='topic-post-item'>
+            <div class="post-preview">
+                <h1 class='display-5'>{{x.post_title}} </h1>
+            </div>
+            <div class="post-preview{{x.post_id}}">
+                <p style='min-height:150px;   overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;' class='lead'>{{x.post_preview_text}}</p>
+            </div>
+            <div class="view-post-button view_post{{x.post_id}}" style='background-color: black; text-align: center; color:white;  padding:1%; border-radius:6px' id="post{{x.post_id}}"><a style='text-decoration:none; color: white; text-align:center;' href="{% url 'post' %}?post={{x.post_id}}" role="button">Read more</a></div>
+        </div>
+        {% endfor %}
+    </div>
 
-
-{% endblock %}
-
+    {% endblock %}

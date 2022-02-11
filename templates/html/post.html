@@ -1,14 +1,18 @@
 {% extends "html/template.html" %}
 {% block content %}
 {% load static %}
-<div class='page-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
+<div class='post-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
     {% include "html/navigation.html" %}
+    <div class='home-page-header'>
+        <h1 style='color:{{changes.header_title_font_color}}'>{{changes.header_title}}</h1>
+        <h3 class='fs-2' style="color:{{changes.header_slogan_font_color}}; text-align: left; margin-left: 1%; background-color:{{changes.header_slogan_background_color}}">{{changes.header_slogan}}</h3>
+    </div>
 </div>
 
- <div id='post-wrapper' style='border:20px solid #7F95D1; padding:3%; box-shadow: 5px 10px #888888; border-radius: 6px;
+ <div id='post-wrapper' style='border:10px solid #484d66; padding:3%; box-shadow: 0px 10px #232626; border-radius: 6px;
 ' class='postwrapper'> 
 {% for x in get_posts %}
-<div class='post-container' > 
+<div class='post-container-post' > 
         <div class="post-preview">
             <h1 class='display-5'>{{x.post_title}} </h1>
         </div> 

@@ -3,26 +3,24 @@
 {% load static %}
 <div class='page-container' style='background-color: {{changes.navigation_drop_down_background_color}}'>
     {% include "html/navigation.html" %}
-
     <div class='home-page-header'>
         <h1 style='color:{{changes.header_title_font_color}}'>{{changes.header_title}}</h1>
-        <h3 class='fs-2'  style="color:{{changes.header_slogan_font_color}}; text-align: left; margin-left: 1%; background-color:{{changes.header_slogan_background_color}}">{{changes.header_slogan}}</h3>
-        
+        <h3 class='fs-2' style="color:{{changes.header_slogan_font_color}}; text-align: left; margin-left: 1%; background-color:{{changes.header_slogan_background_color}}">{{changes.header_slogan}}</h3>
     </div>
-    <div class='wrapper'> 
-    <div class='page-sections'>
-        {% for x in page_section %}
-        <div class='section card' style='background-color:{{changes.section_background_color}}; border:20px solid {{changes.section_border_color}};'>
-            <div class='image-container'> 
-            <img src="{{ MEDIA_URL }}{{x.header_image.url}}" class="card-img-top" alt="...">
+    <div class='wrapper'>
+        <div class='page-sections'>
+            {% for x in page_section %}
+            <div class='section card' style='background-color:{{changes.section_background_color}}; border:10px solid {{changes.section_border_color}}; text-align:center;'>
+                <div class='image-container'>
+                    <img src="{{ MEDIA_URL }}{{x.header_image.url}}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style='color:{{changes.section_header_font_color}}; font-size:3em; font-weight:600;'>{{x.section_title}}</h5>
+                    <h3 class="card-text" style='color:{{changes.section_text_font_color}}'>{{x.section_content}}</h3>
+                </div>
+                <a href="{% url 'post' %}?post={{x.post_id}}" class="btn" style='background-color:{{changes.section_button_background_color}}; font-size:2em; color:{{changes.section_button_font_color}}; position:absolute; bottom:0; width:90%'>{{x.post}}</a>
             </div>
-            <div class="card-body">
-                <h5 class="card-title" style='color:{{changes.section_header_font_color}}'>{{x.section_title}}</h5>
-                <p class="card-text" style='color:{{changes.section_text_font_color}}'>{{x.section_content}}</p>
-            </div>
-            <a href="{% url 'post' %}?post={{x.post_id}}" class="btn" style='background-color:{{changes.section_button_background_color}}; color:{{changes.section_button_font_color}}'>{{x.post}}</a>
+            {% endfor %}
         </div>
-        {% endfor %} 
     </div>
-        </div>
-{% endblock %}
+    {% endblock %}

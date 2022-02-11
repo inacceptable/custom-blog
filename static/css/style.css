@@ -13,31 +13,28 @@ body{
 
 }
 .postwrapper{
-    width: 80%;
-    margin: 0 auto;
+    width: 70%;
+    margin-left: 5%;
+    margin-top: 3%;
 }
 .post-container
 {
     width: 80%;
-    margin: 0 auto;
+
     overflow: hidden;
 }
 
-.view-post-button
-{
-    padding: 1px;
-}
+
 .topic-description
 {
-    width: 55%;
+    width: 100%;
     text-align: left;
     margin-left: 3%;
 }
 .newcard{
     margin-top: 3%;
-    height: 400px;
     background-color: white;
-    position: relative;
+    width: 95%;
     padding: 2%;
 }
 .page-navigation-description {
@@ -45,7 +42,7 @@ body{
     text-align: center;
 }
 
-.page-container {
+.page-container, .topic-container, .post-container {
 
     width: 90%;
     text-align: center;
@@ -62,12 +59,12 @@ body{
     height: 800px;
      overflow-y: none;
 }
-.page-container nav {
+.page-container nav, .topic-container nav, .post-container nav {
     margin-bottom: 4%;
 }
 
-.page-container img {
-    width: 30%;
+.page-container img, .topic-container img, .post-container img {
+    width: auto;
     height: auto;
 }
 
@@ -102,7 +99,7 @@ body{
     user-select: none;
     padding-right: 3%;
     border-radius: 3px; 
-    font-size: 2em;
+    font-size: 3em;
  }
 
 .nav-button:hover
@@ -144,16 +141,33 @@ width: 100%;
 
 .topic-content-container {
     width: 70%;
+    margin: 0 auto;
 
 }
+.topic-post-item-container
+{
+    width: 90%;
+    display: grid;
+    grid-template-columns:  repeat(3, 30%);
+    grid-gap: 5%;
+    margin: 0 auto;
+     margin-top: 5%;
+}
+.view-post-button
+{
+    padding: 3%;
+    bottom: 0;
+    font-size: 2em;
+}
 
+.view-post-bottom a{
+    text-decoration: none;
+}
 
 .topic-post-item {
     padding: 1%;
-    border: 2px solid #1f1d30;
+    border: 10px solid #1f1d30;
     border-radius: 4px;
-
-    width: 100%;
     margin-bottom: 3%;
 }
 
@@ -225,13 +239,18 @@ width: 100%;
     border-radius: 3px;
     font-family: arial;
     margin: 0 auto;
+    margin-top: 5%;
     padding-bottom: 0;
 }
 .home-page-header h1{
-    font-size: 3rem;
+    font-size: 5rem;
     padding: 1%;
     font-weight: lighter;
     text-align: left;
+}
+.home-page-header h3{
+    font-weight: bolder;
+    font-size: 2em;
 }
 
 .card-title
@@ -272,11 +291,12 @@ width: 100%;
 {
     display: grid;
     width: 100%;
-    grid-template-columns: 50% 50%;
-    position: absolute;
-    left: 0;
+    grid-template-columns: 20% 20%;
+    position: relative;
+    margin-top: 4%;
+    right: 0;
     bottom: 0;
-    justify-items: center;
+    margin-left: 0;
 }
 
 

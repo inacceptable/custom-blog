@@ -47,6 +47,24 @@
 	{
 		grid-template-columns: 100%;
 	}
+	.topic-post-item-container
+	{
+		grid-template-columns: 100%;
+		margin: 0 auto;
+	}
+	.topic-post-item{
+		width: 100%;
+	}
+	.topic-button-container
+	{
+		grid-template-columns: 100%;
+		margin: 0 auto;
+	}
+	.topicnavbutton
+	{
+		margin-top: 2%;
+		width: 100%;
+	}
 }
 @media only screen and (max-width: 900px)
 {
